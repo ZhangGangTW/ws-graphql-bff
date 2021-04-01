@@ -1,5 +1,6 @@
 package com.workshop.graphql.bff.client.dto
 
+import com.expediagroup.graphql.generator.scalars.ID
 import com.workshop.graphql.bff.type.Group
 import com.workshop.graphql.bff.type.Role
 import com.workshop.graphql.bff.type.User
@@ -17,7 +18,9 @@ data class UserDto(
             username = username,
             role = Role.valueOf(role),
             email = email,
-            group = Group(groupId)
+            group = Group(
+                id = ID(groupId)
+            )
         )
     }
 }

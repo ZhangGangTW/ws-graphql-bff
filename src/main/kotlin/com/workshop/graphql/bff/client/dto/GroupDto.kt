@@ -1,5 +1,6 @@
 package com.workshop.graphql.bff.client.dto
 
+import com.expediagroup.graphql.generator.scalars.ID
 import com.workshop.graphql.bff.type.Group
 
 data class GroupDto(
@@ -8,7 +9,7 @@ data class GroupDto(
 ) {
     fun toGraphqlType(): Group {
         return Group(
-            id = id,
+            id = ID(id),
             name = name
         )
     }

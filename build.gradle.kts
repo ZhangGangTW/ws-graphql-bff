@@ -29,7 +29,7 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 	implementation("com.graphql-java:graphql-java:16.2")
-
+	implementation("com.expediagroup:graphql-kotlin-spring-server:4.0.0-alpha.17")
 
 
 	developmentOnly("org.springframework.boot:spring-boot-devtools")

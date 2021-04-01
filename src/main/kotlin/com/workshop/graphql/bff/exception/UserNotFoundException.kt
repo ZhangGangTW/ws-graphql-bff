@@ -1,4 +1,4 @@
-package com.workshop.graphql.bff.fetcher.exception
+package com.workshop.graphql.bff.exception
 
 import com.workshop.graphql.bff.GraphQLException
 
