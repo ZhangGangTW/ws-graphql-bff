@@ -1,7 +1,6 @@
 package com.workshop.graphql.bff.fetcher
 
 import com.workshop.graphql.bff.client.GroupClient
-import com.workshop.graphql.bff.client.dto.GroupDto
 import com.workshop.graphql.bff.type.Group
 import com.workshop.graphql.bff.type.User
 import graphql.schema.DataFetcher
@@ -19,13 +18,6 @@ class GroupDataFetcher(
         return groupClient.findById(user.group.id)
             .map { it.toGraphqlType() }
             .toFuture()
-    }
-
-    fun GroupDto.toGraphqlType(): Group {
-        return Group(
-            id = id,
-            name = name
-        )
     }
 
 }
