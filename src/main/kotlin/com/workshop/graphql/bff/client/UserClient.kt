@@ -4,6 +4,7 @@ import com.workshop.graphql.bff.client.dto.UserDto
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
+import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 @Component
@@ -28,9 +29,9 @@ class UserClient {
 
     }
 
-    fun findAll(): Mono<List<UserDto>> {
+    fun findAll(): Flux<UserDto> {
         log.info("### find all users")
-        return Mono.just(
+        return Flux.fromIterable(
             listOf(
                 UserDto(
                     id = "1",
