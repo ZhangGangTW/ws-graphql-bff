@@ -4,6 +4,7 @@ import com.workshop.graphql.bff.client.dto.GroupDto
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
+import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 @Component
@@ -20,9 +21,9 @@ class GroupClient {
         )
     }
 
-    fun findByIds(ids: List<String>): Mono<List<GroupDto>> {
+    fun findByIds(ids: List<String>): Flux<GroupDto> {
         log.info("### find group by ids: $ids")
-        return Mono.just(
+        return Flux.fromIterable(
             ids.map {
                 GroupDto(
                     id = it,
