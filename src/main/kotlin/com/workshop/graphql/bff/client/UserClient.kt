@@ -29,6 +29,7 @@ class UserClient {
     }
 
     fun findAll(): Mono<List<UserDto>> {
+        log.info("### find all users")
         return Mono.just(
             listOf(
                 UserDto(
