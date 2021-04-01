@@ -12,9 +12,8 @@ class GroupBatchLoader(
 ) : BatchLoader<String, Group> {
     override fun load(keys: List<String>): CompletionStage<List<Group>> {
         return groupClient.findByIds(keys)
-            .map {
-                it.map { groupDto -> groupDto.toGraphqlType() }
-            }
+            .map { it.toGraphqlType() }
+            .collectList()
             .toFuture()
     }
 
