@@ -14,6 +14,7 @@ class UserDataFetcher(
 
     override fun get(environment: DataFetchingEnvironment): Future<User> {
         val id = environment.getArgument<String>("id")
-        return userClient.findById(id).toFuture()
+        return userClient.findById(id)
+            .toFuture()
     }
 }
