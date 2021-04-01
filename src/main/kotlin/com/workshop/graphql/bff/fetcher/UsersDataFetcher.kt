@@ -22,15 +22,4 @@ class UsersDataFetcher(
             }
             .toFuture()
     }
-
-    fun UserDto.toGraphqlType(): User {
-        return User(
-            id = id,
-            username = username,
-            role = Role.valueOf(role),
-            email = email,
-            group = Group(groupId)
-        )
-    }
-
 }

@@ -1,5 +1,6 @@
 package com.workshop.graphql.bff.config
 
+import com.workshop.graphql.bff.batch.GroupBatchLoader
 import com.workshop.graphql.bff.fetcher.GroupDataFetcher
 import com.workshop.graphql.bff.fetcher.UserDataFetcher
 import com.workshop.graphql.bff.fetcher.UsersDataFetcher
@@ -30,6 +31,9 @@ class GraphQLConfig {
     @Autowired
     private lateinit var usersDataFetcher: UsersDataFetcher
 
+    @Autowired
+    private lateinit var groupBatchLoader: GroupBatchLoader
+
     @Bean
     fun graphql(): GraphQL {
         //1. Parse schema
@@ -52,5 +56,4 @@ class GraphQLConfig {
             .mutationExecutionStrategy(AsyncSerialExecutionStrategy())//As default
             .build()
     }
-
 }
