@@ -16,7 +16,7 @@ type User {
     username: String!
     email: String
     role: Role!
-    groupId: String!
+    group: Group!
 }
 
 type Group{

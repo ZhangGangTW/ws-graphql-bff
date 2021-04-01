@@ -2,6 +2,7 @@ package com.workshop.graphql.bff.fetcher
 
 import com.workshop.graphql.bff.client.UserClient
 import com.workshop.graphql.bff.client.dto.UserDto
+import com.workshop.graphql.bff.type.Group
 import com.workshop.graphql.bff.type.Role
 import com.workshop.graphql.bff.type.User
 import graphql.schema.DataFetcher
@@ -27,7 +28,7 @@ class UserDataFetcher(
             username = username,
             role = Role.valueOf(role),
             email = email,
-            groupId = groupId
+            group = Group(groupId)
         )
     }
 
