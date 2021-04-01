@@ -17,9 +17,8 @@ class UsersDataFetcher(
 
     override fun get(environment: DataFetchingEnvironment): Future<List<User>> {
         return userClient.findAll()
-            .map {
-                it.map { user -> user.toGraphqlType() }
-            }
+            .map { it.toGraphqlType() }
+            .collectList()
             .toFuture()
     }
 
