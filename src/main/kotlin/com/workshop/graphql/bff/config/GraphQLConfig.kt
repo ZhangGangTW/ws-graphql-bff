@@ -2,6 +2,7 @@ package com.workshop.graphql.bff.config
 
 import com.workshop.graphql.bff.fetcher.GroupDataFetcher
 import com.workshop.graphql.bff.fetcher.UserDataFetcher
+import com.workshop.graphql.bff.fetcher.UsersDataFetcher
 import graphql.GraphQL
 import graphql.execution.AsyncExecutionStrategy
 import graphql.execution.AsyncSerialExecutionStrategy
@@ -26,6 +27,9 @@ class GraphQLConfig {
     @Autowired
     private lateinit var groupDataFetcher: GroupDataFetcher
 
+    @Autowired
+    private lateinit var usersDataFetcher: UsersDataFetcher
+
     @Bean
     fun graphql(): GraphQL {
         //1. Parse schema
@@ -35,6 +39,7 @@ class GraphQLConfig {
         val runtimeWiring = RuntimeWiring.newRuntimeWiring()
             .type("Query") {
                 it.dataFetcher("user", userDataFetcher)
+                it.dataFetcher("users", usersDataFetcher)
             }
             .type("User") {
                 it.dataFetcher("group", groupDataFetcher)
