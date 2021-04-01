@@ -15,8 +15,20 @@ class GroupClient {
         return Mono.just(
             GroupDto(
                 id = id,
-                name = "group$id"
+                name = "group-$id"
             )
+        )
+    }
+
+    fun findByIds(ids: List<String>): Mono<List<GroupDto>> {
+        log.info("### find group by ids: $ids")
+        return Mono.just(
+            ids.map {
+                GroupDto(
+                    id = it,
+                    name = "group-$it"
+                )
+            }
         )
     }
 }
