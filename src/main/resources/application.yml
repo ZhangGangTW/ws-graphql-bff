@@ -1,3 +1,5 @@
 graphql:
   packages:
     - "com.workshop.graphql.bff"
+  sdl:
+    enabled: true
