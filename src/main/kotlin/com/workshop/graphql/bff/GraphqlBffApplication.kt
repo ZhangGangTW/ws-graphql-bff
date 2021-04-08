@@ -7,11 +7,17 @@ import org.springframework.web.cors.CorsConfiguration
 import org.springframework.web.cors.reactive.CorsWebFilter
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource
 import org.springframework.web.reactive.config.EnableWebFlux
+import java.util.*
 
 
 @SpringBootApplication
 @EnableWebFlux
 class GraphqlBffApplication {
+    @Bean
+    fun instanceId(): String {
+        return UUID.randomUUID().toString()
+    }
+
     @Bean
     fun corsWebFilter(): CorsWebFilter {
         val corsConfig = CorsConfiguration()

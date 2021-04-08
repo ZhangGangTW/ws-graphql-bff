@@ -10,18 +10,27 @@ import java.util.concurrent.CompletableFuture
 
 @Component
 class QueryUser(
-    private val userClient: UserClient
+    private val userClient: UserClient,
+    private val instanceId: String
 ) : Query {
     fun user(id: ID): CompletableFuture<User> {
         return userClient.findById(id.value)
-            .map { it.toGraphqlType() }
+            .map {
+                val user = it.toGraphqlType()
+                user.instanceId = instanceId
+                user
+            }
             .onErrorMap(IllegalStateException::class.java) { UserNotFoundException() }
             .toFuture()
     }
 
     fun users(): CompletableFuture<List<User>> {
         return userClient.findAll()
-            .map { it.toGraphqlType() }
+            .map {
+                val user = it.toGraphqlType()
+                user.instanceId = instanceId
+                user
+            }
             .collectList()
             .toFuture()
     }

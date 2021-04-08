@@ -11,6 +11,7 @@ data class User(
     val email: String?,
     val role: Role,
     val group: Group,
+    var instanceId: String? = null
 ) {
     fun group(environment: DataFetchingEnvironment): CompletableFuture<Group> {
         return environment.getValueFromDataLoader(GroupDataLoader::class.simpleName!!, group.id)
