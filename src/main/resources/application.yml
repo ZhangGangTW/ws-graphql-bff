@@ -3,3 +3,15 @@ graphql:
     - "com.workshop.graphql.bff"
   sdl:
     enabled: true
+spring:
+  application:
+    name: WS-GRAPHQL-BFF
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
