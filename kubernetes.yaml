@@ -4,6 +4,7 @@ metadata:
   name: ws-graphql-bff
   labels:
     app: ws-graphql-bff
+    kind: deployment
 spec:
   replicas: 1
   selector:
@@ -26,6 +27,7 @@ metadata:
   name: ws-graphql-bff
   labels:
     spring-boot: "true"
+    kind: service
 spec:
   type: NodePort
   selector:
