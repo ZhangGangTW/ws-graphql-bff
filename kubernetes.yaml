@@ -17,9 +17,20 @@ spec:
     spec:
       containers:
         - name: ws-graphql-bff
-          image: hataketed/ws-graphql-bff:2.1.0
+          image: hataketed/ws-graphql-bff:2.2.0
           ports:
             - containerPort: 8080
+          env:
+            - name: USER_SERVICE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: config-center
+                  key: user_service
+            - name: API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: service-credentials
+                  key: apiKey
 ---
 apiVersion: v1
 kind: Service

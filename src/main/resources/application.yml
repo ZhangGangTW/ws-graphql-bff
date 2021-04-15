@@ -15,3 +15,7 @@ management:
   endpoint:
     health:
       show-details: always
+
+adapter:
+  user-service-host: http://${USER_SERVICE_NAME:""}:8080
+  api-key: ${API_KEY:""}
