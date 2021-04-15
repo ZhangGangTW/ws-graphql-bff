@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: ws-graphql-bff
-          image: hataketed/ws-graphql-bff:2.2.0
+          image: hataketed/ws-graphql-bff:2.2.1
           ports:
             - containerPort: 8080
           env:

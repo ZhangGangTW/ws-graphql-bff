@@ -17,7 +17,7 @@ class UserClient(
     fun findById(id: String): Mono<UserDto> {
         log.info("### find user by id: $id")
         return userWebClient.get()
-            .uri("/{id}", id)
+            .uri("/users/{id}", id)
             .retrieve()
             .bodyToMono(UserDto::class.java)
     }

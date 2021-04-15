@@ -7,5 +7,5 @@ COPY build/libs/graphql-bff-*.jar /app/app.jar
 
 CMD ["java", "-jar", "/app/app.jar"]
 
-#docker build -t hataketed/ws-graphql-bff:2.2.0 .
-#docker push hataketed/ws-graphql-bff:2.2.0
+#docker build -t hataketed/ws-graphql-bff:2.2.1 .
+#docker push hataketed/ws-graphql-bff:2.2.1
