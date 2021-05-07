@@ -13,7 +13,7 @@ class WebClientsConfig {
 
     @Bean
     fun userWebClient(
-        @Value("\${adapter.user-service-host}") userServiceHost: String
+        @Value("\${adapter.user-service-url}") userServiceHost: String
     ): WebClient {
         return WebClient.builder()
             .baseUrl(userServiceHost)
