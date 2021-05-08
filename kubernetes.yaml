@@ -27,11 +27,11 @@ spec:
                   name: config-center
                   key: sidecar_egress_url
         - name: ws-sidecar-ingress
-          image: hataketed/ws-sidecar-ingress:1.0.1
+          image: hataketed/ws-sidecar-ingress:1.0.2
           ports:
             - containerPort: 8002
         - name: ws-sidecar-egress
-          image: hataketed/ws-sidecar-egress:1.0.0
+          image: hataketed/ws-sidecar-egress:1.0.5
           ports:
             - containerPort: 8088
           env:
