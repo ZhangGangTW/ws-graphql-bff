@@ -10,13 +10,13 @@ import reactor.core.publisher.Mono
 
 @Component
 class UserClient(
-    private val userWebClient: WebClient
+    private val webClient: WebClient
 ) {
     private val log: Logger = LoggerFactory.getLogger(UserClient::class.java)
 
     fun findById(id: String): Mono<UserDto> {
         log.info("### find user by id: $id")
-        return userWebClient.get()
+        return webClient.get()
             .uri("/users/{id}", id)
             .retrieve()
             .bodyToMono(UserDto::class.java)

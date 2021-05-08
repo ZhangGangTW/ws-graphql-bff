@@ -17,9 +17,23 @@ spec:
     spec:
       containers:
         - name: ws-graphql-bff
-          image: hataketed/ws-graphql-bff:2.2.2
+          image: hataketed/ws-graphql-bff:3.0.0
           ports:
             - containerPort: 8080
+          env:
+            - name: SIDECAR_EGRESS_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: config-center
+                  key: sidecar_egress_url
+        - name: ws-sidecar-ingress
+          image: hataketed/ws-sidecar-ingress:1.0.1
+          ports:
+            - containerPort: 8002
+        - name: ws-sidecar-egress
+          image: hataketed/ws-sidecar-egress:1.0.0
+          ports:
+            - containerPort: 8088
           env:
             - name: USER_SERVICE_URL
               valueFrom:
@@ -46,4 +60,4 @@ spec:
   ports:
     - protocol: TCP
       port: 8080
-      targetPort: 8080
+      targetPort: 8002

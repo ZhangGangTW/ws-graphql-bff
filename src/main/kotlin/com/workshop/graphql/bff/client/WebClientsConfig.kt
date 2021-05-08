@@ -7,17 +7,14 @@ import org.springframework.web.reactive.function.client.WebClient
 
 @Configuration
 class WebClientsConfig {
-    @Value("\${adapter.api-key}")
-    private lateinit var apiKey: String
+    @Value("\${adapter.sidecar-egress}")
+    private lateinit var sidecarEgress: String
 
 
     @Bean
-    fun userWebClient(
-        @Value("\${adapter.user-service-url}") userServiceHost: String
-    ): WebClient {
+    fun webClient(): WebClient {
         return WebClient.builder()
-            .baseUrl(userServiceHost)
-            .defaultHeader("api-key", apiKey)
+            .baseUrl(sidecarEgress)
             .build()
     }
 }

@@ -17,5 +17,4 @@ management:
       show-details: always
 
 adapter:
-  user-service-url: ${USER_SERVICE_URL}
-  api-key: ${API_KEY}
+  sidecar-egress: ${SIDECAR_EGRESS_URL}
