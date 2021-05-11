@@ -1,0 +1,41 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: bff-expose-gateway
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: bff-virtual-svc
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - bff-expose-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /monitor
+      route:
+        - destination:
+            host: ws-monitor-service
+            port:
+              number: 9080
+    - match:
+        - uri:
+            prefix: /graphql
+      route:
+        - destination:
+            host: ws-graphql-bff
+            port:
+              number: 8080
