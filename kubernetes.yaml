@@ -54,7 +54,6 @@ metadata:
     spring-boot: "true"
     kind: service
 spec:
-  type: NodePort
   selector:
     app: ws-graphql-bff
   ports:
